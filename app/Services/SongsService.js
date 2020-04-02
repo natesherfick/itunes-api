@@ -79,10 +79,8 @@ class SongsService {
    */
   removeSong(id) {
     //TODO Send the id to be deleted from the server then update the store
-    let song = store.State.songs.find(t => t._id == id);
-    _sandBox.delete("playlist", song)
+    _sandBox.delete(id)
     .then(res => {
-      store.commit("playlist", )
       this.getMySongs()
     })
     .catch(err => console.error(err));
