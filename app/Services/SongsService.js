@@ -4,7 +4,8 @@ import store from "../store.js";
 // @ts-ignore
 let _sandBox = axios.create({
   //TODO Change YOURNAME to your actual name
-  baseURL: "//bcw-sandbox.herokuapp.com/api/nateDavid/songs"
+  baseURL: "//bcw-sandbox.herokuapp.com/api/nateDavid/songs",
+  timeout: 10000
 });
 
 class SongsService {
@@ -19,12 +20,13 @@ class SongsService {
    */
   getMusicByQuery(query) {
     //NOTE You will not need to change this method
-    let url = "https://itunes.apple.com/search?callback=?&limit=5&term=" + query;
+    let url =
+      "https://itunes.apple.com/search?callback=?&limit=5&term=" + query;
     // @ts-ignore
     $.getJSON(url)
       .then(res => {
         let results = res.results.map(rawData => new Song(rawData));
-        
+
         store.commit("songs", results);
       })
       .catch(err => {
@@ -55,6 +57,21 @@ class SongsService {
   addSong(id) {
     //TODO you only have an id, you will need to find it in the store before you can post it
     //TODO After posting it what should you do?
+    let song = store.State.songs.find(t => t._id == id);
+    console.log(song);
+    let newSong = new Song(song);
+    store.commit("playlist", newSong);
+
+    _sandBox
+      .post("", store.State.playlist)
+      .then(res => {
+        console.log(
+          "this should be our committed song to playlist",
+          store.State.playlist
+        );
+        //this.getMySongs()
+      })
+      .catch(err => console.error(err));
   }
 
   /**

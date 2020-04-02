@@ -12,7 +12,9 @@ function _drawResults() {
   document.getElementById('songs').innerHTML = template
 }
 /**Draws the Users saved songs to the page */
-function _drawPlaylist() {}
+function _drawPlaylist() {
+
+}
 
 //Public
 export default class SongsController {
@@ -37,7 +39,7 @@ export default class SongsController {
    * @param {string} id
    */
   addSong(id) {
-    
+    SongService.addSong(id)
   }
 
   /**

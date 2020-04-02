@@ -30,14 +30,34 @@ export default class Song {
     <li class="list-group-item"><b>Price:</b> $${this.price}</li>
   </ul>
   <div class="card-body text-center">
-    <a href="#" class="card-link">Add Song</a>
+    <a href="#" class="card-link" onclick="app.songsController.addSong('${this._id}')">Add Song</a>
   </div>
 </div>
     `;
   }
 
   get playlistTemplate() {
-    return `
+    return   /*html*/`
+
+        <div class="card col-5 mx-3 my-3">
+  <img src="${this.albumArt}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${this.title}</h5>
+    <p class="card-text">${this.artist}</p>
+  </div>
+  <audio
+        controls style="width:200px" class="mx-auto mb-2"
+        src="${this.preview}"
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><b>Album:</b> ${this.album}</li>
+  </ul>
+  <div class="card-body text-center">
+    <a href="#" class="card-link" onclick="app.songsController.removeSong('${this._id}')">Remove Song</a>
+  </div>
+</div>
 
         `;
   }
