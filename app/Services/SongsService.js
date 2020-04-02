@@ -11,7 +11,7 @@ let _sandBox = axios.create({
 class SongsService {
   constructor() {
     // NOTE this will get your songs on page load
-    //this.getMySongs();
+    this.getMySongs();
   }
 
   /**
@@ -42,8 +42,10 @@ class SongsService {
       .get()
       .then(res => {
         //TODO What are you going to do with this result
-        let results = res.results.map(rawData => new Song(rawData));
+        let results = res.data.data.map(rawData => new Song(rawData));
+        store.commit("playlist", results)
       })
+
       .catch(error => {
         throw new Error(error);
       });
@@ -65,11 +67,7 @@ class SongsService {
     _sandBox
       .post("", store.State.playlist)
       .then(res => {
-        console.log(
-          "this should be our committed song to playlist",
-          store.State.playlist
-        );
-        //this.getMySongs()
+        this.getMySongs()
       })
       .catch(err => console.error(err));
   }
@@ -81,6 +79,13 @@ class SongsService {
    */
   removeSong(id) {
     //TODO Send the id to be deleted from the server then update the store
+    let song = store.State.songs.find(t => t._id == id);
+    _sandBox.delete("playlist", song)
+    .then(res => {
+      store.commit("playlist", )
+      this.getMySongs()
+    })
+    .catch(err => console.error(err));
   }
 }
 

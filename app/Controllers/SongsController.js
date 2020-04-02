@@ -13,7 +13,11 @@ function _drawResults() {
 }
 /**Draws the Users saved songs to the page */
 function _drawPlaylist() {
+  let playlist = store.State.playlist;
+  let template = ''
 
+  playlist.forEach(song => {template += song.playlistTemplate})
+  document.getElementById('playlist').innerHTML = template
 }
 
 //Public
@@ -21,6 +25,7 @@ export default class SongsController {
   constructor() {
     //TODO Don't forget to register your subscribers
     store.subscribe('songs', _drawResults)
+    store.subscribe('playlist', _drawPlaylist)
   }
 
   /**Takes in the form submission event and sends the query to the service */
