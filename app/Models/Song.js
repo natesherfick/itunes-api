@@ -11,9 +11,17 @@ export default class Song {
   }
 
   get Template() {
-    return `
-
-        `;
+    return   /*html*/`
+    <div className="col-3">
+    ${this.title}
+<audio
+        controls
+        src="${this.preview}"
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+        </div>
+    `;
   }
 
   get playlistTemplate() {
