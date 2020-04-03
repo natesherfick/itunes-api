@@ -20,7 +20,7 @@ export default class Song {
     <p class="card-text">${this.artist}</p>
   </div>
   <audio
-        controls style="width:200px" class="mx-auto mb-2"
+        controls class="mx-auto mb-2 w-100"
         src="${this.preview}"
             Your browser does not support the
             <code>audio</code> element.
