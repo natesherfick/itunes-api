@@ -14,7 +14,7 @@ export default class Song {
     return   /*html*/`
 
         <div class="card col-5 mx-3 my-3">
-  <img src="${this.albumArt}" class="card-img-top" alt="...">
+  <img src="${this.albumArt}" class="card-img-top pt-3" alt="...">
   <div class="card-body">
     <h5 class="card-title">${this.title}</h5>
     <p class="card-text">${this.artist}</p>
@@ -39,8 +39,8 @@ export default class Song {
   get playlistTemplate() {
     return   /*html*/`
 
-        <div class="card col-5 mx-3 my-3">
-  <img src="${this.albumArt}" class="card-img-top" alt="...">
+        <div class="card col-5 mx-auto my-3">
+  <img src="${this.albumArt}" class="card-img-top pt-3" alt="...">
   <div class="card-body">
     <h5 class="card-title">${this.title}</h5>
     <p class="card-text">${this.artist}</p>

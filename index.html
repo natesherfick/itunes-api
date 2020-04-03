@@ -9,13 +9,13 @@
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="assets/style.css" />
-    <title>Music is Fun</title>
+    <title>Who Still Buys Music?</title>
   </head>
 
   <body class="container-fluid background-ish">
-    <header class="row">
+    <header class="row mb-3">
       <div class="col-12 bannerStyle">
-        <p>Music is Fun</p>
+        <h3 class="text-light text-center mt-2">APitunes</h3>
       </div>
       <div class="offset-8 col-4">
         <form onsubmit="app.songsController.search(event)">
@@ -41,7 +41,7 @@
       </div>
       <div class="col-6">
         <h3 class="text-center text-light">Playlist</h3>
-        <div class="col-12 m-0" id="playlist">
+        <div id="playlist" class="row text-center" >
           <!-- template for playlist -->
         </div>
       </div>

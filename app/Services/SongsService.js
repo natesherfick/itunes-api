@@ -62,11 +62,11 @@ class SongsService {
     let song = store.State.songs.find(t => t._id == id);
     console.log(song);
     let newSong = new Song(song);
-    store.commit("playlist", newSong);
 
     _sandBox
-      .post("", store.State.playlist)
+      .post("", newSong)
       .then(res => {
+        store.commit("playlist", store.State.playlist);
         this.getMySongs()
       })
       .catch(err => console.error(err));
